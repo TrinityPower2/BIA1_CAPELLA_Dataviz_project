@@ -1,9 +1,3 @@
-Requirements (as of 21st of October 2023):
-- Python 3.10
-Librairies:
-- Beautiful soup (bs4)
-- Plotly
-- requests
-- Pandas
-- Streamlit
-- datetime
+beautifulsoup4
+plotly
+requests
