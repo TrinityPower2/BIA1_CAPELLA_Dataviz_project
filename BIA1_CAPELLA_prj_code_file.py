@@ -40,6 +40,7 @@ st.plotly_chart(fig)
 
 
 # fourth block (key info of a given group)
+@st.cache
 display_part = st.selectbox("Choisissez un groupe pour obtenir ses informations", df["libelle"])
 display_df = df[df.libelle == display_part].copy()
 col1, col2 = st.columns(2)
@@ -47,6 +48,7 @@ with col1:
     display_df["women"] = display_df["women"] / 100.0
     display_df["men"] = display_df["women"].map(lambda x: 1 - x)
     st.write("Pourcentage de femmes et d'hommes au sein du groupe")
+    @st.cache
     st.bar_chart(display_df, x=None, y=["women", "men"])
 with col2:
     display_rank = int(df["scoreParticipation"].rank(ascending=False).loc[display_df.index].iloc[0])
