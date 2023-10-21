@@ -15,7 +15,7 @@ if response.status_code == 200:
     resources_url = data["resources"][0]["latest"]
     df = pd.read_csv(resources_url)
 else:
-    print(f"Request failed with status code {response.status_code}")
+    st.write(f"Request failed with status code {response.status_code}")
 
 # first block (title)
 st.title("Etude des groupes politiques de l'Assemblée nationale")
@@ -136,7 +136,7 @@ if response.status_code == 200:
     with col3:
         st.video(data=urls[2])
 else:
-    print(f"Request failed with status code {response.status_code}")
+    st.write(f"Request failed with status code {response.status_code}")
 
 
 st.subheader("L'agenda du jour")
@@ -219,7 +219,7 @@ if response.status_code == 200:
         with col2:
             st.markdown(afternoon_sum, unsafe_allow_html=True)
 else:
-    print(f"Request failed with status code {response.status_code}")
+    st.write(f"Request failed with status code {response.status_code}")
 
 
 # Further French politics related inforamation
@@ -256,7 +256,7 @@ if response.status_code == 200:
         st.write("Publié le " + art_list[2]["date"])
         st.write("Par " + art_list[2]['auteur'])
 else:
-    print(f"Request failed with status code {response.status_code}")
+    st.write(f"Request failed with status code {response.status_code}")
 
 
 # Sources
