@@ -14,8 +14,10 @@ if response.status_code == 200:
     data = response.json()
     resources_url = data["resources"][0]["latest"]
     df = pd.read_csv(resources_url)
+    response.close()
 else:
     print(f"Request failed with status code {response.status_code}")
+    response.close()
 
 # first block (title)
 st.title("Etude des groupes politiques de l'Assemblée nationale")
@@ -135,8 +137,10 @@ if response.status_code == 200:
         st.video(data=urls[1])
     with col3:
         st.video(data=urls[2])
+    response.close()
 else:
     print(f"Request failed with status code {response.status_code}")
+    response.close()
 
 
 st.subheader("L'agenda du jour")
@@ -147,6 +151,7 @@ if response.status_code == 200:
 
     full_page = BeautifulSoup(html_code, "html.parser", from_encoding="UTF-8")
     full_table = full_page.find_all("ul", "liste-agenda-journalier")
+    response.close()
     # check if we have events to display
     if len(full_table) == 0:
         st.write("Aucun événement prévu aujourd'hui !")
@@ -217,6 +222,7 @@ if response.status_code == 200:
             st.markdown(afternoon_sum, unsafe_allow_html=True)
 else:
     print(f"Request failed with status code {response.status_code}")
+    response.close()
 
 
 # Further French politics related inforamation
@@ -252,9 +258,11 @@ if response.status_code == 200:
         st.markdown("<a href=" + art_list[2]['url'] + ">" + art_list[2]["titre"] + "</a>", unsafe_allow_html=True)
         st.write("Publié le " + art_list[2]["date"])
         st.write("Par " + art_list[2]['auteur'])
+    response.close()
 
 else:
     print(f"Request failed with status code {response.status_code}")
+    response.close()
 
 
 # Sources
