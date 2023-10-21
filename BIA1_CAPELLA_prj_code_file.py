@@ -148,7 +148,7 @@ agenda_url = "https://www2.assemblee-nationale.fr/agendas/les-agendas"
 try:
     response = requests.get(agenda_url, timeout=20)
 except:
-    print("Error occured")
+    st.write("Error occured")
 if response.status_code == 200:
     html_code = response.content
 
