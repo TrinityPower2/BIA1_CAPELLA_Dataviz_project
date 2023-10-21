@@ -145,7 +145,7 @@ else:
 
 st.subheader("L'agenda du jour")
 agenda_url = "https://www2.assemblee-nationale.fr/agendas/les-agendas"
-response = requests.get(agenda_url)
+response = requests.get(agenda_url, timeout=20)
 if response.status_code == 200:
     html_code = response.content
 
